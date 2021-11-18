@@ -6,7 +6,7 @@ ArrayList *createArrayList(int maxElementCount)
     if (maxElementCount > 0)
     {
         if (!(al = (ArrayList *)malloc(sizeof(ArrayList) * (maxElementCount + 1))))
-            return NULL;
+            return (NULL);
         al->maxElementCount = maxElementCount;
         al->currentElementCount = 0;
         al->pElement = (ArrayListNode *)malloc);
