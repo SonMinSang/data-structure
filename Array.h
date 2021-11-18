@@ -1,7 +1,10 @@
-ifndef __ARRAY_H__
-    define __ARRAY_H__
+#ifndef __ARRAY_H__
+#define __ARRAY_H__
 
-    typedef struct ArrayListNode
+#include <stdlib.h>
+
+
+typedef struct ArrayListNode
 {
     int data;
 } ArrayListNode;
@@ -13,12 +16,12 @@ typedef struct ArrayList
     ArrayListNode *pElement;
 } ArrayList;
 
-ArrayList *createArrayList(int maxElementCount);
-int deleteArrayList(int index);
+ArrayList* createArrayList(int maxElementCount);
+int deleteArrayList(ArrayList al, int index);
 int isArrayListFull(ArrayList al);
 int removeAlElement(ArrayList al);
-int displayArrayList(int index, ArrayList al);
+int displayArrayList(ArrayList al, int index);
 clearArrayList(ArrayList al);
 getArrayListLength(ArrayList al);
 
-endif __ARRAY_H__
+#endif __ARRAY_H__
