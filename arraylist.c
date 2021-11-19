@@ -21,9 +21,16 @@ ArrayList *createArrayList(int maxElementCount)
     }
     return (NULL);
 }
-int deleteArrayList(ArrayList *pList)
-{
 
+void deleteArrayList(ArrayList *pList)
+{
+    if (pList == NULL)
+        printf("null");
+    else
+    {
+        free(pList->pElement);
+        free(pList);
+    }
 }
 
 int isArrayListFull(ArrayList *pList)
@@ -37,21 +44,84 @@ int isArrayListFull(ArrayList *pList)
     return (FALSE);
 }
 
-int addALElement(ArrayList *pList, int position, ArrayListNode element);
+int addALElement(ArrayList *pList, int position, ArrayListNode element)
 {
     if (isArrayListFull(pList))
         return (FALSE);
-    else if (position > pList->currentElementCount)
+    else if (position > pList->currentElementCount || position < 0)
     {
         printf("not valid position");
         return (FALSE);
     }
-    else 
-    for (int i = position; i < pList->currentElementCount)
+    else
+    {
+        for (int i = pList->currentElementCount; i > position; i--)
+            pList->pElement[i + 1] = pList->pElement[i];
+        pList->pElement[position] = element;
+        pList->currentElementCount++;
+        return (TRUE);
+    }
 }
 
-int removeALElement(ArrayList *pList, int position);
-ArrayListNode *getALElement(ArrayList *pList, int position);
-void displayArrayList(ArrayList *pList);
-void clearArrayList(ArrayList *pList);
-int getArrayListLength(ArrayList *pList);
+int removeALElement(ArrayList *pList, int position)
+{
+    if (position > pList->currentElementCount || position < 0)
+    {
+        printf("not valid position");
+        return (FALSE);
+    }
+    else
+    {
+        for (int i = position; i < pList->currentElementCount; i++)
+            pList->pElement[i] = pList->pElement[i + 1];
+        pList->currentElementCount--;
+        return (TRUE);
+    }
+}
+
+ArrayListNode *getALElement(ArrayList *pList, int position)
+{
+    ArrayListNode *Element;
+    if (position < 0 || position > pList->currentElementCount)
+    {
+        printf("not valid postion");
+        return (NULL);
+    }
+    Element = &(pList->pElement[position]);
+    return (Element);
+}
+
+void displayArrayList(ArrayList *pList)
+{
+    if (pList == NULL)
+        printf("null");
+    else
+    {
+        printf("The length of arraylist: %d,\nthe max length of arraylist: %d ", pList->currentElementCount, pList->maxElementCount);
+        for (int i = 0; i < pList->currentElementCount; i++)
+            printf("{%d: %d}", i, getALElement(pList, i)->data);
+    }
+}
+
+void clearArrayList(ArrayList *pList)
+{
+    if (pList == NULL)
+        printf("null");
+    else
+    {
+        pList->currentElementCount = 0;
+        pList->maxElementCount = 0;
+        pList->pElement = NULL;
+    }
+}
+
+int getArrayListLength(ArrayList *pList)
+{
+    if (pList == NULL)
+    {
+        printf("null");
+        return (FALSE);
+    }
+    else
+        return (pList->currentElementCount);
+}
