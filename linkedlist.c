@@ -25,7 +25,6 @@ int addLLElement(LinkedList *pList, int position, ListNode element)
     }
     if (position < 0 || position > pList->currentElementCount)
     {
-
         printf("not valid position");
         return (FALSE);
     }
@@ -33,7 +32,7 @@ int addLLElement(LinkedList *pList, int position, ListNode element)
         return (FALSE);
     *addNode = element;
     currentNode = &(pList->headerNode);
-    for (int i = 0; i < position - 1; i++)
+    for (int i = 0; i < position; i++)
         currentNode = currentNode->pLink;
     addNode->pLink = currentNode->pLink;
     currentNode->pLink = addNode;
@@ -57,7 +56,7 @@ int removeLLElement(LinkedList *pList, int position)
         return (FALSE);
     }
     currentNode = &(pList->headerNode);
-    for (int i = 0; i < position - 1; i++)
+    for (int i = 0; i < position; i++)
         currentNode = currentNode->pLink;
     deleteNode = currentNode->pLink;
     currentNode->pLink = deleteNode->pLink;
@@ -135,13 +134,11 @@ void deleteLinkedList(LinkedList *pList)
 
 int main(void)
 {
-
     LinkedList *pList = NULL;
     ListNode node = {node.data = 0, node.pLink = NULL};
 
     // Dynamic Memory allocation
     pList = createLinkedList();
-
     if (pList == NULL)
         return -1;
 
@@ -151,7 +148,6 @@ int main(void)
     addLLElement(pList, 1, node);
     node.data = 5;
     addLLElement(pList, 2, node);
-    removeLLElement(pList, 1);
-    Delete_Linked_List(pList);
+    printf("1");
     return 0;
 }
