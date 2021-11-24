@@ -14,13 +14,19 @@ CircularList *createCircularList()
     return pList;
 }
 
-void deleteCircularList(CircularList *pList);
+void deleteCircularList(CircularList *pList)
+{
+    clearCircularList(pList);
+    free(pList);
+}
+
 int addCLElement(CircularList *pList, int position, CircularListNode element)
 {
     CircularListNode *preNode;
     CircularListNode *newNode;
     CircularListNode *lastNode;
 
+    newNode = (CircularListNode *)malloc(sizeof(CircularListNode));
     if (pList = NULL)
     {
         printf("null");
@@ -31,6 +37,8 @@ int addCLElement(CircularList *pList, int position, CircularListNode element)
         printf("not valid postion");
         return (FALSE);
     }
+    if (!newNode)
+        return (FALSE);
     *newNode = element;
     if (position == 0)
     {
