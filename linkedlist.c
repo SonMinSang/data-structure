@@ -89,7 +89,7 @@ void clearLinkedList(LinkedList *pList)
 {
     if (pList != NULL)
     {
-        if (pList->currentElementCount > 0)
+        while (pList->currentElementCount > 0)
             removeLLElement(pList, 0);
     }
 }
@@ -148,6 +148,5 @@ int main(void)
     addLLElement(pList, 1, node);
     node.data = 5;
     addLLElement(pList, 2, node);
-    printf("1");
     return 0;
 }
