@@ -1,16 +1,62 @@
-#include "linkedlist.h"
+#include "linkedlist copy.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-LinkedList *createLinkedList()
+LinkedList *addLinkedList(LinkedList *a, LinkedList *b)
 {
     LinkedList *pList;
-
+    ListNode addNode;
+    ListNode *aNode;
+    ListNode *bNode;
+    int index = 0;
     pList = (LinkedList *)malloc(sizeof(LinkedList));
     if (!pList)
         return NULL;
     pList->currentElementCount = 0;
-    // pList->headerNode = NULL;
+    if (!a || !b)
+        return NULL;
+    aNode = a->headerNode.pLink;
+    bNode = b->headerNode.pLink;
+    while (!aNode || !bNode)
+    {
+        if (aNode->degree > bNode->degree)
+        {
+            addNode.coef = aNode->coef;
+            addNode.degree = aNode->degree;
+            aNode = aNode->pLink;
+        }
+        else if (aNode->degree > bNode->degree)
+        {
+            addNode.coef = aNode->coef + bNode->coef;
+            addNode.degree = aNode->degree;
+            aNode = aNode->pLink;
+            bNode = bNode->pLink;
+        }
+        else
+        {
+            addNode.coef = bNode->coef;
+            addNode.degree = bNode->degree;
+            bNode = bNode->pLink;
+        }
+        addLLElement(pList, index, addNode);
+        index++;
+    }
+    while (!aNode)
+    {
+        addNode.coef = aNode->coef;
+        addNode.degree = aNode->degree;
+        aNode = aNode->pLink;
+        addLLElement(pList, index, addNode);
+        index++;
+    }
+    while (!bNode)
+    {
+        addNode.coef = bNode->coef;
+        addNode.degree = bNode->degree;
+        bNode = bNode->pLink;
+        addLLElement(pList, index, addNode);
+        index++;
+    }
     return pList;
 }
 
@@ -155,23 +201,4 @@ void reverseLinkedList(LinkedList *pList)
         tempNode->pLink = preNode;
     }
     headNode->pLink = tempNode;
-}
-
-int main(void)
-{
-    LinkedList *pList = NULL;
-    ListNode node = {node.data = 0, node.pLink = NULL};
-
-    // Dynamic Memory allocation
-    pList = createLinkedList();
-    if (pList == NULL)
-        return -1;
-
-    node.data = 1;
-    addLLElement(pList, 0, node);
-    node.data = 3;
-    addLLElement(pList, 1, node);
-    node.data = 5;
-    addLLElement(pList, 2, node);
-    return 0;
 }
