@@ -2,6 +2,32 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int addLLElement(LinkedList *pList, int position, ListNode element)
+{
+    ListNode *currentNode;
+    ListNode *addNode;
+    if (!pList)
+    {
+        printf("null");
+        return (FALSE);
+    }
+    if (position < 0 || position > pList->currentElementCount)
+    {
+        printf("not valid position");
+        return (FALSE);
+    }
+    if (!(addNode = (ListNode *)malloc(sizeof(ListNode))))
+        return (FALSE);
+    *addNode = element;
+    currentNode = &(pList->headerNode);
+    for (int i = 0; i < position; i++)
+        currentNode = currentNode->pLink;
+    addNode->pLink = currentNode->pLink;
+    currentNode->pLink = addNode;
+    pList->currentElementCount++;
+    return (TRUE);
+}
+
 LinkedList *addLinkedList(LinkedList *a, LinkedList *b)
 {
     LinkedList *pList;
@@ -58,32 +84,6 @@ LinkedList *addLinkedList(LinkedList *a, LinkedList *b)
         index++;
     }
     return pList;
-}
-
-int addLLElement(LinkedList *pList, int position, ListNode element)
-{
-    ListNode *currentNode;
-    ListNode *addNode;
-    if (!pList)
-    {
-        printf("null");
-        return (FALSE);
-    }
-    if (position < 0 || position > pList->currentElementCount)
-    {
-        printf("not valid position");
-        return (FALSE);
-    }
-    if (!(addNode = (ListNode *)malloc(sizeof(ListNode))))
-        return (FALSE);
-    *addNode = element;
-    currentNode = &(pList->headerNode);
-    for (int i = 0; i < position; i++)
-        currentNode = currentNode->pLink;
-    addNode->pLink = currentNode->pLink;
-    currentNode->pLink = addNode;
-    pList->currentElementCount++;
-    return (TRUE);
 }
 
 int removeLLElement(LinkedList *pList, int position)

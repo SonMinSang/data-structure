@@ -87,6 +87,9 @@ ArrayListNode *getALElement(ArrayList *pList, int position)
         printf("not valid postion");
         return (NULL);
     }
+    Element = (ArrayListNode *)malloc(sizeof(ArrayListNode));
+    if (!Element)
+        return (NULL);
     Element = &(pList->pElement[position]);
     return (Element);
 }

@@ -3,7 +3,8 @@
 
 typedef struct ListNodeType
 {
-	int data;
+	double coef;
+	int degree;
 	struct ListNodeType *pLink;
 } ListNode;
 
