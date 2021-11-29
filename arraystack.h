@@ -8,9 +8,9 @@ typedef struct ArrayStackNodeType
 
 typedef struct ArrayStackType
 {
-    int maxElementCount;      // �ִ� ���� ����
-    int currentElementCount;  // ���� ������ ����
-    ArrayStackNode *pElement; // ��� ������ ���� 1���� array
+    int maxElementCount;
+    int currentElementCount;
+    ArrayStackNode *pElement;
 } ArrayStack;
 
 ArrayStack *createArrayStack(int maxElementCount);
@@ -20,6 +20,7 @@ ArrayStackNode *peekAS(ArrayStack *pStack);
 void deleteArrayStack(ArrayStack *pStack);
 int isArrayStackFull(ArrayStack *pStack);
 int isArrayStackEmpty(ArrayStack *pStack);
+void displayArrayStack(ArrayStack *pStack);
 
 #endif
 
