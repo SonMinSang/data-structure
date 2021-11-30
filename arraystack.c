@@ -19,6 +19,7 @@ ArrayStack *createArrayStack(int maxElementCount)
         free(stack);
         return (NULL);
     }
+    stack->pElement = 0;
     return (stack);
 }
 
@@ -68,13 +69,10 @@ ArrayStackNode *peekAS(ArrayStack *pStack)
 
 void deleteArrayStack(ArrayStack *pStack)
 {
-    if (!pStack)
+    if (pStack == NULL)
         return;
-    while (!isArrayStackEmpty(pStack))
-        popAS(pStack);
     free(pStack->pElement);
     free(pStack);
-    return;
 }
 
 int isArrayStackFull(ArrayStack *pStack)
@@ -153,7 +151,7 @@ int main()
     ArrayStackNode node0 = {'a'};
 
     int number;
-    myStack = createArrayStack(100);
+    myStack = createArrayStack(3);
     while (1)
     {
         printf("1 : Push\n2 : Pop\n3 : Peek\n4 : Display\n5 : Delete\n");

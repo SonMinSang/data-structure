@@ -35,13 +35,22 @@ StackNode *popLS(LinkedStack *pStack)
         return (FALSE);
     if (!isLinkedStackEmpty(pStack))
     {
-        StackNode *topNode;
-        topNode = pStack->pTopElement;
-        pStack->pTopElement = topNode->pLink;
-        free(topNode);
+        //반환할 pop 노드의 주소를 담을 그릇 생성
+        StackNode *pop_Node;
+
+        //pop_Node에 현재 top노드의 주소 할당
+        pop_Node = pStack->pTopElement;
+
+        //pStack->pTop = NULL;
+
+        //기존 두번째 노드와 헤드 연결 -> top 교체
+        pStack->pTopElement = pop_Node->pLink;
         pStack->currentElementCount--;
-        return (pStack->pTopElement);
+
+        return (pop_Node);
     }
+    else
+        return (NULL);
 }
 
 StackNode *peekLS(LinkedStack *pStack)
@@ -72,28 +81,61 @@ int isLinkedStackEmpty(LinkedStack *pStack)
         return (FALSE);
     if (pStack->currentElementCount == 0)
         return (TRUE);
+    return (FALSE);
 }
+
 void displayLinkedStack(LinkedStack *pStack)
 {
-    StackNode *currentNode;
-    int length;
+    //현재 사이즈와 인덱스에 따른 데이터값 출력하는 함수
 
-    length = pStack->currentElementCount;
-    if (pStack = NULL || length == 0)
-    {
-        printf("null");
+    //예외 처리
+    if (!pStack)
         return;
-    }
-    printf("currentElementCount : %d", pStack->currentElementCount);
-    currentNode = pStack->pTopElement;
-    for (int i = 0; i < length; i++)
+    StackNode *curr; //순회용 포인터 생성
+    int idx = pStack->currentElementCount - 1;
+
+    curr = pStack->pTopElement;
+    printf("stack size : %d\n", pStack->currentElementCount);
+    while (curr)
     {
-        printf("{%d, %d}", length - i, currentNode->data);
-        currentNode = currentNode->pLink;
+        printf("{index: %d, data: %c}\n", idx, curr->data);
+        curr = curr->pLink;
+        idx--;
     }
 }
 
-int main (void)
+int main()
 {
-    
+    LinkedStack *pStack = NULL;
+
+    StackNode *temp = NULL;
+    StackNode *ppopp = NULL;
+
+    pStack = createLinkedStack();
+    if (pStack != 0)
+    {
+        StackNode node1 = {'a', 0};
+        StackNode node2 = {'b', 0};
+        StackNode node3 = {'c', 0};
+
+        pushLS(pStack, node1);
+        pushLS(pStack, node2);
+        pushLS(pStack, node3);
+
+        printf("currentsize : %d", pStack->currentElementCount);
+
+        ppopp = popLS(pStack);
+        temp = peekLS(pStack);
+
+        displayLinkedStack(pStack);
+
+        printf("returned peek data : %c\n", temp->data);
+        printf("returned pop data : %c\n", ppopp->data);
+
+        deleteLinkedStack(pStack);
+        printf("%d\n", isLinkedStackEmpty(pStack));
+
+        printf("after deleteLSfunc");
+        return (0);
+    }
 }

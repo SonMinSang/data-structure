@@ -9,8 +9,8 @@ typedef struct StackNodeType
 
 typedef struct LinkedStackType
 {
-    int currentElementCount; 
-    StackNode *pTopElement;  
+    int currentElementCount;
+    StackNode *pTopElement;
 } LinkedStack;
 
 LinkedStack *createLinkedStack();
@@ -20,6 +20,7 @@ StackNode *peekLS(LinkedStack *pStack);
 void deleteLinkedStack(LinkedStack *pStack);
 int isLinkedStackFull(LinkedStack *pStack);
 int isLinkedStackEmpty(LinkedStack *pStack);
+void displayLinkedStack(LinkedStack *pStack);
 
 #endif
 
