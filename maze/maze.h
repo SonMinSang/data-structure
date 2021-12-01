@@ -15,17 +15,18 @@ typedef struct LinkedStackType
     StackNode *pTopElement;
 } LinkedStack;
 
-int Directions[4][2] =
+static int Directions[4][2] =
     {
         {0, 1},
         {0, -1},
         {1, 0},
         {-1, 0}};
 
-int Maze()
-{
-}
+int height;
+int width;
+void solve_maze(int **map, LinkedStack *pStack, StackNode start, StackNode goal);
 
+void print(int **map);
 LinkedStack *createLinkedStack();
 int pushLS(LinkedStack *pStack, StackNode element);
 StackNode *popLS(LinkedStack *pStack);
