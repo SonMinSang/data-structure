@@ -8,27 +8,28 @@ typedef struct ArrayQueueNodeType
 
 typedef struct ArrayQueueType
 {
-	int maxElementCount;		// ÃÖ´ë ¿ø¼Ò °³¼ö
-	int currentElementCount;	// ÇöÀç ¿ø¼ÒÀÇ °³¼ö
-	int front;					// front À§Ä¡
-	int rear;					// rear À§Ä¡
-	ArrayQueueNode *pElement;	// ³ëµå ÀúÀåÀ» À§ÇÑ 1Â÷¿ø ¹è¿­ Æ÷ÀÎÅÍ
+	int maxElementCount;	  // ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	int currentElementCount;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	int front;				  // front ï¿½ï¿½Ä¡
+	int rear;				  // rear ï¿½ï¿½Ä¡
+	ArrayQueueNode *pElement; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 } ArrayQueue;
 
-ArrayQueue* createArrayQueue(int maxElementCount);
-int enqueueAQ(ArrayQueue* pQueue, ArrayQueueNode element);
-ArrayQueueNode *dequeueAQ(ArrayQueue* pQueue);
-ArrayQueueNode *peekAQ(ArrayQueue* pQueue);
-void deleteArrayQueue(ArrayQueue* pQueue);
-int isArrayQueueFull(ArrayQueue* pQueue);
-int isArrayQueueEmpty(ArrayQueue* pQueue);
+ArrayQueue *createArrayQueue(int maxElementCount);
+int enqueueAQ(ArrayQueue *pQueue, ArrayQueueNode element);
+ArrayQueueNode *dequeueAQ(ArrayQueue *pQueue);
+ArrayQueueNode *peekAQ(ArrayQueue *pQueue);
+void deleteArrayQueue(ArrayQueue *pQueue);
+int isArrayQueueFull(ArrayQueue *pQueue);
+int isArrayQueueEmpty(ArrayQueue *pQueue);
+void displayArrayQueue(ArrayQueue *pQueue);
 
 #endif
 
 #ifndef _COMMON_QUEUE_DEF_
 #define _COMMON_QUEUE_DEF_
 
-#define TRUE		1
-#define FALSE		0
+#define TRUE 1
+#define FALSE 0
 
 #endif

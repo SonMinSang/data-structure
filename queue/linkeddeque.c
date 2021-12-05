@@ -1,17 +1,19 @@
-#include "arrayqueue.c"
+#include "linkeddeque.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 LinkedDeque *createLinkedDeque()
 {
-    LinkeDeque *pDeque;
+    LinkedDeque *pDeque;
 
-    if (!(pDeque = (LinkedQueue)malloc(sizeof(LinkedQueue))))
+    if (!(pDeque = (LinkedDeque *)malloc(sizeof(LinkedDeque))))
         return (NULL);
     pDeque->currentElementCount = 0;
     pDeque->pFrontNode = 0;
     pDeque->pRearNode = 0;
     return (pDeque);
 }
+
 int insertFrontLD(LinkedDeque *pDeque, DequeNode element)
 {
     if (!pDeque)
@@ -19,8 +21,8 @@ int insertFrontLD(LinkedDeque *pDeque, DequeNode element)
     DequeNode *addNode;
     if (!(addNode = (DequeNode *)malloc(sizeof(DequeNode))))
         return (FALSE);
-    *addNode = pDeque;
-    if (isLinkedDequeEmpty(addNode))
+    *addNode = element;
+    if (isLinkedDequeEmpty(pDeque))
     {
         pDeque->pFrontNode = addNode;
         pDeque->pRearNode = addNode;
@@ -41,7 +43,7 @@ int insertRearLD(LinkedDeque *pDeque, DequeNode element)
     DequeNode *addNode;
     if (!(addNode = (DequeNode *)malloc(sizeof(DequeNode))))
         return (FALSE);
-    *addNode = pDeque;
+    *addNode = element;
     if (isLinkedDequeEmpty(pDeque))
     {
         pDeque->pFrontNode = addNode;
@@ -137,4 +139,68 @@ int isLinkedDequeEmpty(LinkedDeque *pDeque)
     if (pDeque->currentElementCount == 0)
         return (TRUE);
     return (FALSE);
+}
+
+void displayDeque(LinkedDeque *pDeque)
+{
+    if (!pDeque)
+        return;
+    DequeNode *temp;
+    int i = 0;
+
+    temp = pDeque->pFrontNode;
+    printf("pDeque size : %d\n", pDeque->currentElementCount);
+    while (temp != NULL)
+    {
+        printf("{index: %d, data: %c}\n", i, temp->data);
+        i++;
+        temp = temp->pRLink;
+    }
+    return;
+}
+
+int main()
+{
+    LinkedDeque *pDeque;
+
+    DequeNode *del;
+    DequeNode node0 = {'a'};
+
+    int number;
+    pDeque = createLinkedDeque();
+    while (1)
+    {
+        printf("1 : InsertFront\n2 : DeleteFront\n3 : Peek\n4 : Display\n5 : Delete\n");
+        scanf(" %d", &number);
+        switch (number)
+        {
+        case 1:
+            printf("data : \n");
+            getchar();
+            scanf("%c", &node0.data);
+            insertFrontLD(pDeque, node0);
+            displayDeque(pDeque);
+
+            break;
+        case 2:
+            del = deleteFrontLD(pDeque);
+            printf("%c has del!\n", del->data);
+            free(del);
+            displayDeque(pDeque);
+            break;
+        case 3:
+            del = peekFrontLD(pDeque);
+            printf("tada %c!\n", del->data);
+            break;
+        case 4:
+            displayDeque(pDeque);
+            break;
+        case 5:
+            deleteLinkedDeque(pDeque);
+            break;
+        default:
+            break;
+        }
+    }
+    return (0);
 }
