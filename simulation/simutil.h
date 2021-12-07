@@ -1,8 +1,7 @@
 #ifndef _SIM_UTIL_
 #define _SIM_UTIL_
 
-#include "linkedqueue.h"
-
+#include "simdef.h"
 // °í°´ µµÂø Å¥¿¡ °í°´ Ãß°¡.
 void insertCutomer(int arrivalTime, int processTime, LinkedQueue *pQueue);
 

@@ -147,8 +147,3 @@ void execute()
     }
     return;
 }
-int main(void)
-{
-    execute();
-    system("leaks linkedqueue.exe");
-}

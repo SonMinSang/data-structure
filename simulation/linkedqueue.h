@@ -1,9 +1,11 @@
 #ifndef _LINKED_QUEUE_
 #define _LINKED_QUEUE_
 
+#include "simdef.h"
+
 typedef struct QueueNodeType
 {
-	char data;
+	SimCustomer data;
 	struct QueueNodeType *pLink;
 } QueueNode;
 
