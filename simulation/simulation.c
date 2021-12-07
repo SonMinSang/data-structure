@@ -132,10 +132,8 @@ int main()
         printWaitQueueStatus(currentTime, waitQueue);
     }
     printReport(waitQueue, serviceUserCount, totalWaitTime);
-    if (serviceNode != NULL)
-    {
+    if (!serviceNode)
         free(serviceNode);
-    }
     deleteLinkedQueue(arrivalQueue);
     deleteLinkedQueue(waitQueue);
 }
