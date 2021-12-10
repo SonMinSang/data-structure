@@ -17,25 +17,5 @@ typedef struct SimCustomerType
 	int endTime;	 // 종료 시각: 시작 시각 + 서비스 시간.
 } SimCustomer;
 
-typedef struct QueueNodeType
-{
-	SimCustomer data;
-	struct QueueNodeType *pLink;
-} QueueNode;
-
-typedef struct LinkedQueueType
-{
-	int currentElementCount;
-	QueueNode *pFrontNode;
-	QueueNode *pRearNode;
-} LinkedQueue;
-
-#endif
-
-#ifndef _COMMON_QUEUE_DEF_
-#define _COMMON_QUEUE_DEF_
-
-#define TRUE 1
-#define FALSE 0
 
 #endif
