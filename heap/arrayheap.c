@@ -22,7 +22,7 @@ void deleteArrayHeap(ArrayHeap *pArrayHeap)
 {
     if (!pArrayHeap)
         return;
-    if (!pArrayHeap->pElement)
+    if (pArrayHeap->pElement)
         free(pArrayHeap->pElement);
     free(pArrayHeap);
 }
