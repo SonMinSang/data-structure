@@ -2,6 +2,8 @@
 #define _GRAPH_ADJLIST_
 
 #include "linkedlist.h"
+#include "linkedstack.h"
+#include "linkeddeque.h"
 
 typedef struct LinkedGraphType
 {
