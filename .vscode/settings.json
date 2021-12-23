@@ -1,6 +1,8 @@
 {
   "files.associations": {
     "linkedlist.h": "c",
-    "arrayqueue.h": "c"
+    "arrayqueue.h": "c",
+    "linkedgraph.h": "c",
+    "stdlib.h": "c"
   }
 }

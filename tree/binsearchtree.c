@@ -11,6 +11,7 @@ BinSearchTree *createBinSearchTree()
 
     return (pBinSearchTree);
 }
+
 int insertElementBST(BinSearchTree *pBinSearchTree, BinSearchTreeNode element)
 {
     if (!pBinSearchTree)
@@ -32,7 +33,7 @@ int insertElementBST(BinSearchTree *pBinSearchTree, BinSearchTreeNode element)
 
     while (parentNode)
     {                                       // addNode 를 넣을 위치 찾기
-        if (parentNode->key == element.key) // key 중복시 FALSE 반환
+        if (parentNode->key == element.key)  
             return (FALSE);
 
         if (parentNode->key < element.key) // parentNode 의 key가 찾을 key보다 작을 때
@@ -58,6 +59,7 @@ int insertElementBST(BinSearchTree *pBinSearchTree, BinSearchTreeNode element)
 
     return (TRUE);
 }
+
 int deleteElementBST(BinSearchTree *pBinSearchTree, int key)
 {
     BinSearchTreeNode *delNode;
@@ -65,7 +67,7 @@ int deleteElementBST(BinSearchTree *pBinSearchTree, int key)
     BinSearchTreeNode *childNode;
     if (!pBinSearchTree)
         return (FALSE);
-    while (delNode != NULL)
+    while (delNode)
     {
         if (delNode->key == key)
             break;
@@ -114,6 +116,7 @@ int deleteElementBST(BinSearchTree *pBinSearchTree, int key)
     free(delNode);
     return (TRUE);
 }
+
 BinSearchTreeNode *searchRecursiveBST(BinSearchTree *pBinSearchTree, int key)
 {
     if (!pBinSearchTree)
@@ -150,9 +153,13 @@ BinSearchTreeNode *searchBST(BinSearchTree *pBinSearchTree, int key)
     }
     return temp;
 }
+
 void deleteBinSearchTree(BinSearchTree *pBinSearchTree)
 {
+
 }
+
 void deleteBinSearchTreeInternal(BinSearchTreeNode *pTreeNode)
 {
+
 }

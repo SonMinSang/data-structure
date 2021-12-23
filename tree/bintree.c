@@ -75,6 +75,7 @@ void deleteBinTreeNode(BinTreeNode *pNode)
         return;
     deleteBinTreeNode(pNode->pLeftChild);
     deleteBinTreeNode(pNode->pRightChild);
+    free(pNode);
 }
 
 void preorder(BinTree *pBinTree, BinTreeNode *currentNode)
@@ -111,13 +112,32 @@ void inorder(BinTree *pBinTree, BinTreeNode *currentNode)
         inorder(pBinTree, currentNode->pRightChild);
     }
 }
-void preorderTraversalRecursiveBinTreeNode(BinTreeNode *pRootNode) {
-    if (pRootNode == NULL) return;
-    printf("%c ", pRootNode->data);
-    preorderTraversalRecursiveBinTreeNode(pRootNode->pLeftChild);
-    preorderTraversalRecursiveBinTreeNode(pRootNode->pRightChild);
+void newpreorder(BinTreeNode *pRootNode)
+{
+    if (pRootNode == NULL)
+        return;
+    printf("%c->", pRootNode->data);
+    newpreorder(pRootNode->pLeftChild);
+    newpreorder(pRootNode->pRightChild);
 }
 
+void newinorder(BinTreeNode *pRootNode)
+{
+    if (pRootNode == NULL)
+        return;
+    newinorder(pRootNode->pLeftChild);
+    printf("%c->", pRootNode->data);
+    newinorder(pRootNode->pRightChild);
+}
+
+void newpostorder(BinTreeNode *pRootNode)
+{
+    if (pRootNode == NULL)
+        return;
+    newpostorder(pRootNode->pLeftChild);
+    newpostorder(pRootNode->pRightChild);
+    printf("%c->", pRootNode->data);
+}
 
 void createExample()
 {
@@ -153,10 +173,7 @@ void createExample()
     node.data = 'M';
     BinTreeNode *nodeM = insertRightChildNodeBT(nodeG, node);
 
-    // preorder(pBinTree, nodeA);
-    // printf("\n");
-    //inorder(pBinTree, nodeA);
-    preorderTraversalRecursiveBinTreeNode(nodeA);
+    preorder(nodeA);
 }
 
 void loop()
