@@ -1,4 +1,5 @@
 #include "arrayheap.h"
+#include <stdlib.h>
 
 ArrayHeap *createArrayHeap(int maxElementCount)
 {
@@ -35,6 +36,7 @@ void insertHeapNode(ArrayHeap *pArrayHeap, HeapNode element)
     }
     pArrayHeap->pElement[nextpos] = element;
 }
+
 void deleteArrayHeap(ArrayHeap *pArrayHeap)
 {
     if (!pArrayHeap)
@@ -52,6 +54,7 @@ int isFullArrayHeap(ArrayHeap *pArrayHeap)
         return (TRUE);
     return (FALSE);
 }
+
 int isEmptyArrayHeap(ArrayHeap *pArrayHeap)
 {
     if (!pArrayHeap)
@@ -60,6 +63,7 @@ int isEmptyArrayHeap(ArrayHeap *pArrayHeap)
         return (TRUE);
     return (FALSE);
 }
+
 HeapNode *deleteHeapNode(ArrayHeap *pArrayHeap)
 {
     if (!pArrayHeap)
