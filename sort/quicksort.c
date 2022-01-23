@@ -37,16 +37,16 @@ void quicksort(int array[], int start, int end)
     temp = array[pivot];
     array[pivot] = array[right];
     array[right] = temp;
-    display(array, start, end); 
-    printf("%d %d \n",start, right);
+
     quicksort(array, start, right - 1);
     quicksort(array, right + 1, end);
 }
 
 int main(void)
 {
-    int i[4] = {2, 0, 3, 1};
+    // int i[4] = {2, 0, 3, 1};
     int array[10] = {5, 9, 8, 1, 3, 5, 7, 0, 2, 4};
-    quicksort(i, 0, 3);
-    display(i, 0, 3);
+    quicksort(array, 0, 9);
+    display(array, 0, 9);
+    // display(i, 0, 3);
 }
