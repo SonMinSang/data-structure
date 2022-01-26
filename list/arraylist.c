@@ -111,11 +111,8 @@ void clearArrayList(ArrayList *pList)
     if (pList == NULL)
         printf("null");
     else
-    {
         pList->currentElementCount = 0;
-        pList->maxElementCount = 0;
-        pList->pElement = NULL;
-    }
+
 }
 
 int getArrayListLength(ArrayList *pList)
